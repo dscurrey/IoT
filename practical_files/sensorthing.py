@@ -49,10 +49,10 @@ def get_readings(tag):
 while(True):
     print('------------------------------------')
     readings = get_readings(tag)
-    #print("Gyro:\t{}".format(readings["gyro"]))
-    #print("Accelerometer:\t{}".format(readings["accele"]))
+    print("Gyro:\t{}".format(readings["gyro"]))
+    print("Accelerometer:\t{}".format(readings["accele"]))
     print("IR Temp:\t{}".format(readings["ir_temp"]))
-    #print("IR:\t{}".format(readings["ir"]))
+    print("IR:\t{}".format(readings["ir"]))
     print("Humidity Temp:\t{}".format(readings["humidity_temp"]))
     print("Humidity:\t{}".format(readings["humidity"]))
     print("Baro Temp:\t{}".format(readings["baro_temp"]))
