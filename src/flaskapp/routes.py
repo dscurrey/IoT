@@ -6,7 +6,8 @@ import datetime
 @app.route("/")
 @app.route("/index")
 def index():
-    return render_template('index.html', title='Home')
+    data = SensorData.query.order_by(SensorData.timestamp.desc())
+    return render_template('index.html', title='Home', data=data)
 
 @app.route('/', methods=["POST"])
 def newdata():

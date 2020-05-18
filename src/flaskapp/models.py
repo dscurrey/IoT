@@ -10,4 +10,8 @@ class SensorData(db.Model):
     timestamp = db.Column(db.DateTime)
 
     def __repr__(self):
-        return '<SensorData {}>'.format(self.temperature)
+        return '<SensorData {}>'.format(self.id)
+    
+    @staticmethod
+    def getAll():
+        return SensorData.query.all()
