@@ -1,6 +1,7 @@
 from bluepy.btle import BTLEException
 from bluepy.sensortag import SensorTag
 import time
+import requests
 
 SENSOR_ADDRESS = '54:6C:0E:53:12:D5'
 
@@ -32,7 +33,6 @@ while(True):
     print('------------------------------------')
     readings = get_readings(tag)
 
-    print("Pressure:\t{}hPa".format(readings["pressure"]))
-    print("Baro Temp:\t{}°C".format(readings["baro_temp"]))
-    print("Light:\t{}".format(readings["light"]))
-    
+    # Testing POST
+    r = requests.post("localhost:5000", data={'temp':readings["baro_temp"]})
+    print(r.status_code)
