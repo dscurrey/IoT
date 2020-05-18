@@ -179,3 +179,5 @@ src/.vscode/
 .vscode/
 
 iotvenv/
+
+*.db
