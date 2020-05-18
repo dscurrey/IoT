@@ -1,8 +1,8 @@
-"""Added sensor values
+"""Updated DB
 
-Revision ID: 3d257bbc7096
+Revision ID: 40562f975781
 Revises: 
-Create Date: 2020-05-18 17:16:49.526780
+Create Date: 2020-05-18 18:52:41.817526
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '3d257bbc7096'
+revision = '40562f975781'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -21,10 +21,10 @@ def upgrade():
     op.create_table('sensor_data',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('humidity', sa.Float(), nullable=True),
-    sa.Column('humidity_temp', sa.Float(), nullable=True),
-    sa.Column('baro_temp', sa.Float(), nullable=True),
+    sa.Column('avg_temp', sa.Float(), nullable=True),
     sa.Column('baro_pressure', sa.Float(), nullable=True),
     sa.Column('light', sa.Float(), nullable=True),
+    sa.Column('timestamp', sa.DateTime(), nullable=True),
     sa.PrimaryKeyConstraint('id')
     )
     # ### end Alembic commands ###

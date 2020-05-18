@@ -11,14 +11,15 @@ def index():
 
 @app.route('/', methods=["POST"])
 def newdata():
-    baro_temp = request.json['baro_temp']
-    baro_pressure = request.json['baro_pressure']
-    light = request.json['light']
-    humidity_temp = request.json['humidity_temp']
-    humidity = request.json['humidity']
+    baro_temp = round(request.json['baro_temp'], 2)
+    baro_pressure = round(request.json['baro_pressure'], 2)
+    light = round(request.json['light'], 2)
+    humidity_temp = round(request.json['humidity_temp'], 2)
+    humidity = round(request.json['humidity'], 2)
+    avg_temp = round((baro_temp + humidity_temp)/2, 2)
     timestamp = datetime.datetime.now()
 
-    sensordata = SensorData(timestamp=timestamp,baro_temp=baro_temp, baro_pressure=baro_pressure,light=light,humidity_temp=humidity_temp,humidity=humidity)
+    sensordata = SensorData(timestamp=timestamp, baro_pressure=baro_pressure,light=light,humidity=humidity, avg_temp=avg_temp)
     
     db.session.add(sensordata)
     db.session.commit()

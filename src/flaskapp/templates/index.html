@@ -7,8 +7,7 @@
     <th>
         <tr>
             <td><b>Humidity</b></td>
-            <td><b>Humidity Temp</b></td>
-            <td><b>Barometer Temp</b></td>
+            <td><b>Average Temp</b></td>
             <td><b>Barometer Pressure</b></td>
             <td><b>Light</b></td>
             <td><b>Timestamp</b></td>
@@ -17,8 +16,7 @@
     {% for item in data %}
     <tr>
         <td>{{ item.humidity }}%</td>
-        <td>{{ item.humidity_temp }}°C</td>
-        <td>{{ item.baro_temp }}°C</td>
+        <td>{{ item.avg_temp }}°C</td>
         <td>{{ item.baro_pressure }}hPa</td>
         <td>{{ item.light }}lx</td>
         <td>{{ item.timestamp }}</td>
