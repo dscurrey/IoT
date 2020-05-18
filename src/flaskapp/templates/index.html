@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1>Sensor Data</h1>
+
+<table class="table table-striped table-bordered table-sm">
+    <th>
+        <tr>
+            <td><b>Humidity</b></td>
+            <td><b>Average Temp</b></td>
+            <td><b>Barometer Pressure</b></td>
+            <td><b>Light</b></td>
+            <td><b>Timestamp</b></td>
+        </tr>
+    </th>
+    {% for item in data %}
+    <tr>
+        <td>{{ item.humidity }}%</td>
+        <td>{{ item.avg_temp }}°C</td>
+        <td>{{ item.baro_pressure }}hPa</td>
+        <td>{{ item.light }}lx</td>
+        <td>{{ item.timestamp }}</td>
+    </tr>
+    {% endfor %}
+</table>
+
+{% endblock %}
