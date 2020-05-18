@@ -5,6 +5,8 @@ import requests
 
 SENSOR_ADDRESS = '54:6C:0E:53:12:D5'
 
+API = "localhost:5000"
+
 tag = SensorTag(SENSOR_ADDRESS)
 tag.connect(tag.deviceAddr, tag.addrType)
 
@@ -34,5 +36,10 @@ while(True):
     readings = get_readings(tag)
 
     # Testing POST
-    r = requests.post("localhost:5000", data={'temp':readings["baro_temp"]})
+    data = {
+        'temp':readings["baro_temp"]
+    }
+
+    r = requests.post(url=API, data=data)
+
     print(r.status_code)
