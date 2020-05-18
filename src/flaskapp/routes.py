@@ -1,6 +1,7 @@
 from flaskapp import app, db
 from flaskapp.models import SensorData
 from flask import render_template, request, jsonify
+import datetime
 
 @app.route("/")
 @app.route("/index")
@@ -14,8 +15,9 @@ def newdata():
     light = request.json['light']
     humidity_temp = request.json['humidity_temp']
     humidity = request.json['humidity']
+    timestamp = datetime.datetime.now()
 
-    sensordata = SensorData(baro_temp=baro_temp, baro_pressure=baro_pressure,light=light,humidity_temp=humidity_temp,humidity=humidity)
+    sensordata = SensorData(timestamp=timestamp,baro_temp=baro_temp, baro_pressure=baro_pressure,light=light,humidity_temp=humidity_temp,humidity=humidity)
     
     db.session.add(sensordata)
     db.session.commit()
