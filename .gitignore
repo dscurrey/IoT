@@ -175,3 +175,7 @@ dmypy.json
 src/iotvenv/
 
 src/.vscode/
+
+.vscode/
+
+iotvenv/
