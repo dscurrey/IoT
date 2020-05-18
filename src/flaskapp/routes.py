@@ -9,8 +9,13 @@ def index():
 
 @app.route('/', methods=["POST"])
 def newdata():
-    temp = request.json['temp']
-    sensordata = SensorData(temperature=temp)
+    baro_temp = request.json['baro_temp']
+    baro_pressure = request.json['baro_pressure']
+    light = request.json['light']
+    humidity_temp = request.json['humidity_temp']
+    humidity = request.json['humidity']
+
+    sensordata = SensorData(baro_temp=baro_temp, baro_pressure=baro_pressure)
     
     db.session.add(sensordata)
     db.session.commit()
