@@ -9,31 +9,31 @@ tag.connect(tag.deviceAddr, tag.addrType)
 
 def enable_sensors(tag):
     tag.IRtemperature.enable()
-    #tag.accelerometer.enable()
+    tag.accelerometer.enable()
     tag.humidity.enable()
-    #tag.magnetometer.enable()
+    tag.magnetometer.enable()
     tag.barometer.enable()
-    #tag.gyroscope.enable()
-    #tag.keypress.enable()
+    tag.gyroscope.enable()
+    tag.keypress.enable()
     tag.lightmeter.enable()
     time.sleep(1)
 
 def disable_sensors(tag):
     tag.IRtemperature.disable()
-    #tag.accelerometer.disable()
+    tag.accelerometer.disable()
     tag.humidity.disable()
-    #tag.magnetometer.disable()
+    tag.magnetometer.disable()
     tag.barometer.disable()
-    #tag.gyroscope.disable()
-    #tag.keypress.disable()
+    tag.gyroscope.disable()
+    tag.keypress.disable()
     tag.lightmeter.disable()
 
 def get_readings(tag):
     try:
         enable_sensors(tag)
         readings = {}
-        #readings["gyro"] = tag.gyroscope.read()
-        #readings["accele"] = tag.accelerometer.read()
+        readings["gyro"] = tag.gyroscope.read()
+        readings["accele"] = tag.accelerometer.read()
         readings["ir_temp"],readings["ir"] = tag.IRtemperature.read()
         readings["humidity_temp"],readings["humidity"] = tag.humidity.read()
         readings["baro_temp"],readings["pressure"] = tag.barometer.read()
