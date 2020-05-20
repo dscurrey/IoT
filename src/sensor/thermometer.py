@@ -6,7 +6,7 @@ import requests
 SENSOR_ADDRESS = '54:6C:0E:53:12:D5'
 API = "http://192.168.0.21:5000"
 
-INTERVAL = 10
+INTERVAL = 5
 
 tag = SensorTag(SENSOR_ADDRESS)
 tag.connect(tag.deviceAddr, tag.addrType)
