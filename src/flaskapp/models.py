@@ -7,6 +7,7 @@ class SensorData(db.Model):
     baro_pressure = db.Column(db.Float)
     light = db.Column(db.Float)
     timestamp = db.Column(db.DateTime)
+    danger_level = db.Column(db.Integer)
 
     def __repr__(self):
         return '<SensorData {}>'.format(self.id)
