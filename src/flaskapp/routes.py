@@ -1,7 +1,8 @@
 from flaskapp import app, db
-from flaskapp.models import SensorData
+from flaskapp.models import SensorData, DangerLevel
 from flask import render_template, request, jsonify
 import datetime
+from flaskapp.dangercalc import danger_calculation
 
 @app.route("/")
 @app.route("/index")
@@ -18,8 +19,9 @@ def newdata():
     humidity = round(request.json['humidity'], 2)
     avg_temp = round((baro_temp + humidity_temp)/2, 2)
     timestamp = datetime.datetime.now()
+    danger_level = danger_calculation(baro_pressure, light, humidity, avg_temp)
 
-    sensordata = SensorData(timestamp=timestamp, baro_pressure=baro_pressure,light=light,humidity=humidity, avg_temp=avg_temp)
+    sensordata = SensorData(timestamp=timestamp, baro_pressure=baro_pressure,light=light,humidity=humidity, avg_temp=avg_temp, danger_level=danger_level)
     
     db.session.add(sensordata)
     db.session.commit()
