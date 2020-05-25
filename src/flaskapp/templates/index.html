@@ -15,7 +15,11 @@
         </tr>
     </th>
     {% for item in data %}
+    {% if item.danger_level == 1 %}+
+    <tr style="color: red;">
+    {% else %}
     <tr>
+    {% endif %}
         <td>{{ item.humidity }}%</td>
         <td>{{ item.avg_temp }}°C</td>
         <td>{{ item.baro_pressure }} hPa</td>
