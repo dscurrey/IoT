@@ -33,7 +33,7 @@ def graph():
     line_labels = ['']
 
     line_values = SensorData.getAll()
-    line_values.sort(key=lambda x: x.timestamp, reverse=True)
-    #line_values = line_values[:12]
+    line_values.sort(key=lambda x: x.timestamp)
+    line_values = line_values[-12:]
 
     return render_template('graph.html', title='Average Temperature Graph', max=40, labels=line_labels, values=line_values)
